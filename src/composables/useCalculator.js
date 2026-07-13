@@ -9,7 +9,7 @@ export function useCalculator() {
 
   function inputNumber(digit) {
     if (digit === '.' && display.value.includes('.')) return
-    
+
     display.value = display.value === '0' ? digit : display.value + digit
   }
 
@@ -63,5 +63,11 @@ export function useCalculator() {
     operator.value = null
   }
 
-  return { display, inputNumber, inputOperator, calculate }
+  function clear() {
+    display.value = '0'
+    previousValue.value = null
+    operator.value = null
+  }
+
+  return { display, inputNumber, inputOperator, calculate, clear }
 }

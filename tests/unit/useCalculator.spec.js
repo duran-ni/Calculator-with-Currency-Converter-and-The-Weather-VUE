@@ -81,4 +81,15 @@ describe("useCalculator", () => {
 
     expect(display.value).toBe("3.57");
   });
+
+  it('resetea la calculadora al pulsar CE', () => {
+    const { display, inputNumber, inputOperator, clear } = useCalculator()
+
+    inputNumber('7')
+    inputOperator('+')
+    inputNumber('2')
+    clear()
+
+    expect(display.value).toBe('0')
+  })
 });
