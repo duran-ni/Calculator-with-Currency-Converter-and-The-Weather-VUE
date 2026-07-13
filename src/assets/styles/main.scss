@@ -1,0 +1,5 @@
+// Punto de entrada único de estilos: importa las partículas base.
+// Los componentes seguirán usando <style lang="scss" scoped> para sus
+// propios estilos (metodología BEM), pero todos comparten estas bases.
+@use "./base/variables";
+@use "./base/reset";

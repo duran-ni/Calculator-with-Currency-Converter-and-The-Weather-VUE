@@ -1,0 +1,27 @@
+// Variables globales del proyecto: colores, espaciados y tipografía.
+
+:root {
+  // Colores principales
+  --color-primary: #4a90e2;
+  --color-accent: #ff9f43;
+  --color-error: #e74c3c;
+
+  // Colores neutros
+  --color-background: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-text: #1e2733;
+  --color-text-muted: #6b7684;
+
+  // Espaciados (escala consistente)
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+
+  // Bordes y sombras
+  --radius-md: 14px;
+  --shadow-card: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+  // Tipografía
+  --font-family-base: "Segoe UI", Roboto, Arial, sans-serif;
+}
