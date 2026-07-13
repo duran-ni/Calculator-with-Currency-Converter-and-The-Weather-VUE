@@ -34,6 +34,12 @@ export function useCalculator() {
         result = previousValue.value * current
         break
       case '/':
+        if (current === 0) {
+          display.value = 'Error: no se puede dividir por cero'
+          previousValue.value = null
+          operator.value = null
+          return
+        }
         result = previousValue.value / current
         break
     }
