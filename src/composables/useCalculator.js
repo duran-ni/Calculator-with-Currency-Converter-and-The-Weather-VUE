@@ -8,6 +8,8 @@ export function useCalculator() {
   const operator = ref(null)
 
   function inputNumber(digit) {
+    if (digit === '.' && display.value.includes('.')) return
+    
     display.value = display.value === '0' ? digit : display.value + digit
   }
 
