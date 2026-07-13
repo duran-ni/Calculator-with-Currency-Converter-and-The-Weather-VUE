@@ -11,15 +11,9 @@ export function useCalculator() {
     display.value = display.value === '0' ? digit : display.value + digit
   }
 
-  function inputOperator(op) {
-    previousValue.value = Number(display.value)
-    operator.value = op
-    display.value = '0'
-  }
-
-  function calculate() {
-    if (previousValue.value === null || operator.value === null) return
-
+  // Ejecuta la operación pendiente (previousValue + operator + display actual)
+  // y deja el resultado en display. Devuelve false si hubo un error (ej. /0).
+  function performPendingOperation() {
     const current = Number(display.value)
     let result
 
@@ -38,13 +32,31 @@ export function useCalculator() {
           display.value = 'Error: no se puede dividir por cero'
           previousValue.value = null
           operator.value = null
-          return
+          return false
         }
         result = previousValue.value / current
         break
     }
 
     display.value = String(result)
+    return true
+  }
+
+  function inputOperator(op) {
+    if (previousValue.value !== null && operator.value !== null) {
+      const success = performPendingOperation()
+      if (!success) return
+    }
+
+    previousValue.value = Number(display.value)
+    operator.value = op
+    display.value = '0'
+  }
+  
+  function calculate() {
+    if (previousValue.value === null || operator.value === null) return
+
+    performPendingOperation()
     previousValue.value = null
     operator.value = null
   }

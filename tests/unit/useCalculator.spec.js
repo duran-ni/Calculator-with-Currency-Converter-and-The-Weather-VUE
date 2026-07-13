@@ -56,4 +56,17 @@ describe('useCalculator', () => {
 
     expect(display.value).toBe('Error: no se puede dividir por cero')
   })
+
+  it('encadena operaciones si se pulsa un operador antes de "="', () => {
+    const { display, inputNumber, inputOperator, calculate } = useCalculator()
+
+    inputNumber('2')
+    inputOperator('+')
+    inputNumber('3')
+    inputOperator('*')
+    inputNumber('4')
+    calculate()
+
+    expect(display.value).toBe('20')
+  })
 })
