@@ -74,5 +74,11 @@ export function useCalculator() {
     operator.value = null
   }
 
-  return { display, historyDisplay, inputNumber, inputOperator, calculate, clear }
+  // Recupera un valor externo (p. ej. desde el store de memoria)
+  // y lo escribe directamente en la pantalla principal.
+  function recallValue(value) {
+    display.value = String(value)
+  }
+
+  return { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue }
 }

@@ -103,4 +103,12 @@ describe("useCalculator", () => {
 
     expect(historyDisplay.value).toBe('5 +')
   })
+
+  it('recupera un valor y lo muestra en pantalla con recallValue()', () => {
+    const { display, recallValue } = useCalculator()
+
+    recallValue(99)
+
+    expect(display.value).toBe('99')
+  })
 });
