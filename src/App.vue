@@ -5,7 +5,7 @@ import CalculatorMemory from './components/calculator/CalculatorMemory.vue'
 import CalculatorDisplay from './components/calculator/CalculatorDisplay.vue'
 import CalculatorKeypad from './components/calculator/CalculatorKeypad.vue'
 
-const { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue } = useCalculator()
+const { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue, applyPercentage, toggleSign } = useCalculator()
 const memory = useMemoryStore()
 
 function handleMemoryAdd() {
@@ -41,6 +41,8 @@ function handleMemoryClear() {
       @operator="inputOperator"
       @equal="calculate"
       @clear="clear"
+      @percentage="applyPercentage"
+      @sign="toggleSign"
     />
 
     <footer class="app__footer">

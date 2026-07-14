@@ -1,15 +1,14 @@
 <script setup>
 import CalculatorButton from './CalculatorButton.vue'
 
-defineEmits(['number', 'operator', 'equal', 'clear'])
+defineEmits(['number', 'operator', 'equal', 'clear', 'percentage', 'sign'])
 </script>
 
 <template>
   <div class="calculator-keypad">
     <CalculatorButton label="CE" variant="clear" @press="$emit('clear')" />
-    <!-- % y ± son visuales por ahora: no tienen lógica implementada -->
-    <CalculatorButton label="%" />
-    <CalculatorButton label="±" />
+    <CalculatorButton label="%" @press="$emit('percentage')" />
+    <CalculatorButton label="±" @press="$emit('sign')" />
     <CalculatorButton label="÷" variant="operator" @press="$emit('operator', '/')" />
 
     <CalculatorButton label="7" @press="$emit('number', '7')" />

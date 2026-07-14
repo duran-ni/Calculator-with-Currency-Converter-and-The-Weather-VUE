@@ -80,5 +80,18 @@ export function useCalculator() {
     display.value = String(value)
   }
 
-  return { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue }
+  // Convierte el valor actual de la pantalla en su equivalente porcentual (÷100)
+  function applyPercentage() {
+    const current = Number(display.value)
+    display.value = String(current / 100)
+  }
+
+  // Invierte el signo del valor actual en pantalla, evitando mostrar "-0"
+  function toggleSign() {
+    const current = Number(display.value)
+    if (current === 0) return
+    display.value = String(current * -1)
+  }
+
+  return { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue, applyPercentage, toggleSign }
 }

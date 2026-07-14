@@ -111,4 +111,31 @@ describe("useCalculator", () => {
 
     expect(display.value).toBe('99')
   })
+
+  it('convierte el valor en pantalla a su porcentaje con applyPercentage()', () => {
+    const { display, inputNumber, applyPercentage } = useCalculator()
+
+    inputNumber('5')
+    inputNumber('0')
+    applyPercentage()
+
+    expect(display.value).toBe('0.5')
+  })
+
+  it('invierte el signo del valor en pantalla con toggleSign()', () => {
+    const { display, inputNumber, toggleSign } = useCalculator()
+
+    inputNumber('5')
+    toggleSign()
+
+    expect(display.value).toBe('-5')
+  })
+
+  it('no muestra "-0" al invertir el signo de "0"', () => {
+    const { display, toggleSign } = useCalculator()
+
+    toggleSign()
+
+    expect(display.value).toBe('0')
+  })
 });
