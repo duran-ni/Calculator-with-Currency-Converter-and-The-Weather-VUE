@@ -1,11 +1,15 @@
 <script setup>
 import CalculatorButton from './CalculatorButton.vue'
 
-defineEmits(['number', 'operator', 'equal', 'clear'])
+defineEmits(['number', 'operator', 'equal', 'clear','memory-add', 'memory-recall', 'memory-clear'])
 </script>
 
 <template>
   <div class="calculator-keypad">
+    <CalculatorButton label="M+" variant="memory" @press="$emit('memory-add')" />
+    <CalculatorButton label="MR" variant="memory" @press="$emit('memory-recall')" />
+    <CalculatorButton label="MC" variant="memory" @press="$emit('memory-clear')" />
+    
     <CalculatorButton
       label="CE"
       variant="clear"
