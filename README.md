@@ -79,9 +79,19 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** que hay un valor guardado en memoria, **cuando** pulso "MC", **entonces** la memoria se vacía y una posterior pulsación de "MR" no recupera nada.
 - **Dado** que hay un valor guardado en memoria, **cuando** permanezco en la misma sesión sin recargar completamente la página y pulso "MR", **entonces** el store de Pinia sigue conservando el último valor guardado.
 
+#### HU-06 (Extra): Botones % y ± en la calculadora
+
+**Como** usuario, **quiero** aplicar el porcentaje o cambiar el signo del número en pantalla, **para** agilizar cálculos comunes sin teclear operaciones adicionales.
+
+**Criterios de aceptación:**
+
+- **Dado** que hay un número en pantalla, **cuando** pulso "%", **entonces** el valor se convierte en su equivalente porcentual (dividido entre 100).
+- **Dado** que hay un número en pantalla, **cuando** pulso "±", **entonces** el signo del número se invierte (positivo a negativo o viceversa).
+- **Dado** que el valor en pantalla es "0", **cuando** pulso "±", **entonces** el valor permanece en "0" (no se muestra "-0").
+
 ### Épica 2 — Conversor de divisas
 
-#### HU-06: Conversión entre Euro, Dólar y Yen
+#### HU-07: Conversión entre Euro, Dólar y Yen
 
 **Como** usuario, **quiero** convertir una cantidad entre Euro (€), Dólar ($) y Yen (¥), **para** conocer su equivalencia en otra divisa.
 
@@ -91,7 +101,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** que selecciono la misma divisa como origen y destino, **cuando** se ejecuta la conversión, **entonces** el resultado mostrado es igual a la cantidad introducida.
 - **Dado** que tengo divisas de origen y destino seleccionadas, **cuando** pulso el botón de intercambio (⇅), **entonces** las divisas de origen y destino se invierten y el resultado se recalcula.
 
-#### HU-07: Integración con la calculadora
+#### HU-08: Integración con la calculadora
 
 **Como** usuario, **quiero** que el conversor tome como entrada el valor actual de la calculadora, **para** no tener que volver a escribir el número.
 
@@ -100,7 +110,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** que tengo un resultado en la pantalla de la calculadora, **cuando** abro/uso el conversor, **entonces** ese valor aparece precargado como cantidad a convertir.
 - **Dado** que el conversor tiene una cantidad precargada, **cuando** modifico manualmente la cantidad en el conversor, **entonces** esta acción no altera el estado de la calculadora.
 
-#### HU-08: Manejo de errores de la API de divisas
+#### HU-09: Manejo de errores de la API de divisas
 
 **Como** usuario, **quiero** ser informado si la conversión falla, **para** entender por qué no obtengo un resultado.
 
@@ -111,7 +121,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 
 ### Épica 3 — Módulo "El Tiempo"
 
-#### HU-09: Consulta del tiempo nacional o de Asturias
+#### HU-10: Consulta del tiempo nacional o de Asturias
 
 **Como** usuario, **quiero** ver el tiempo actual a nivel nacional o de Asturias, **para** conocer las condiciones meteorológicas relevantes para mí.
 
@@ -121,7 +131,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** que estoy viendo el tiempo nacional, **cuando** pulso el botón "Asturias" y la petición se completa, **entonces** se muestran los datos meteorológicos de esa provincia.
 - **Dado** que estoy en el módulo del tiempo, **cuando** cambio de ámbito (nacional ↔ Asturias), **entonces** solo se actualiza el módulo del tiempo, sin afectar a la calculadora ni al conversor.
 
-#### HU-10: Imagen según stateSky
+#### HU-11: Imagen según stateSky
 
 **Como** usuario, **quiero** ver una imagen/icono acorde al estado del cielo, **para** interpretar visualmente el tiempo de un vistazo.
 
@@ -130,7 +140,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** un valor de `stateSky` devuelto por la API, **cuando** se renderiza el módulo, **entonces** se muestra la imagen correspondiente a ese estado (p. ej. soleado, nublado, lluvia).
 - **Dado** que `stateSky` no coincide con ningún valor mapeado, **cuando** se renderiza el módulo, **entonces** se muestra un icono/imagen por defecto en lugar de un espacio vacío o un error visual.
 
-#### HU-11: Manejo de carga y errores del módulo del tiempo
+#### HU-12: Manejo de carga y errores del módulo del tiempo
 
 **Como** usuario, **quiero** que se me informe si la información del tiempo tarda o falla, **para** saber que la aplicación sigue funcionando correctamente.
 
@@ -141,7 +151,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 
 ### Épica 4 — Diseño y experiencia
 
-#### HU-12: Diseño Mobile First
+#### HU-13: Diseño Mobile First
 
 **Como** usuario que accede desde el móvil, **quiero** que la interfaz esté optimizada para pantallas pequeñas, **para** usar cómodamente todos los módulos sin necesidad de escritorio.
 
@@ -151,7 +161,7 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** que accedo desde un dispositivo de pantalla más ancha, **cuando** la aplicación se abre en tablet/escritorio, **entonces** el layout se adapta manteniendo la usabilidad (p. ej. mayor espaciado, tamaños de botón proporcionales).
 - **Dado** que estoy usando un dispositivo táctil, **cuando** interactúo con cualquier botón, **entonces** el área táctil es suficientemente grande para uso táctil (mínimo ~44x44px).
 
-#### HU-13: Vista única sin router
+#### HU-14: Vista única sin router
 
 **Como** usuario, **quiero** que todos los módulos estén disponibles en una sola pantalla, **para** no tener que navegar entre vistas distintas.
 
@@ -159,9 +169,9 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 
 - **Dado** que accedo a la URL de la aplicación, **cuando** esta carga, **entonces** calculadora, conversor de divisas y módulo del tiempo son visibles/accesibles en la misma vista, sin cambios de URL ni uso de Vue Router.
 
-### Épica 5 — Calidad y despliegue
+### Épica 5 — Calidad
 
-#### HU-14: Cobertura de tests
+#### HU-15: Cobertura de tests
 
 **Como** desarrollador, **quiero** contar con tests unitarios y e2e, **para** garantizar que la lógica y los flujos principales funcionan correctamente.
 
@@ -170,24 +180,6 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** el proyecto, **cuando** ejecuto `npm run test:unit`, **entonces** al menos un test unitario (p. ej. lógica de la calculadora) pasa correctamente.
 - **Dado** el proyecto, **cuando** ejecuto `npm run test:e2e`, **entonces** al menos un test e2e (p. ej. flujo completo de una operación en la calculadora) pasa correctamente.
 
-#### HU-15: Entrega y despliegue
-
-**Como** evaluador, **quiero** acceder al repositorio y a la aplicación desplegada, **para** revisar el código y probar la aplicación en funcionamiento.
-
-**Criterios de aceptación:**
-
-- **Dado** el README del proyecto, **cuando** lo reviso, **entonces** incluye el enlace al repositorio de GitHub y el enlace a la aplicación publicada en GitHub Pages.
-- **Dado** el historial de Git, **cuando** lo reviso, **entonces** refleja commits atómicos y descriptivos organizados por rama/tarea.
-
-#### HU-16 (Extra, Épica 1): Botones % y ± en la calculadora
-
-**Como** usuario, **quiero** aplicar el porcentaje o cambiar el signo del número en pantalla, **para** agilizar cálculos comunes sin teclear operaciones adicionales.
-
-**Criterios de aceptación:**
-
-- **Dado** que hay un número en pantalla, **cuando** pulso "%", **entonces** el valor se convierte en su equivalente porcentual (dividido entre 100).
-- **Dado** que hay un número en pantalla, **cuando** pulso "±", **entonces** el signo del número se invierte (positivo a negativo o viceversa).
-- **Dado** que el valor en pantalla es "0", **cuando** pulso "±", **entonces** el valor permanece en "0" (no se muestra "-0").
 
 ---
 
