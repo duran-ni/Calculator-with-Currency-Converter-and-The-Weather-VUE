@@ -179,6 +179,16 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 - **Dado** el README del proyecto, **cuando** lo reviso, **entonces** incluye el enlace al repositorio de GitHub y el enlace a la aplicación publicada en GitHub Pages.
 - **Dado** el historial de Git, **cuando** lo reviso, **entonces** refleja commits atómicos y descriptivos organizados por rama/tarea.
 
+#### HU-16 (Extra, Épica 1): Botones % y ± en la calculadora
+
+**Como** usuario, **quiero** aplicar el porcentaje o cambiar el signo del número en pantalla, **para** agilizar cálculos comunes sin teclear operaciones adicionales.
+
+**Criterios de aceptación:**
+
+- **Dado** que hay un número en pantalla, **cuando** pulso "%", **entonces** el valor se convierte en su equivalente porcentual (dividido entre 100).
+- **Dado** que hay un número en pantalla, **cuando** pulso "±", **entonces** el signo del número se invierte (positivo a negativo o viceversa).
+- **Dado** que el valor en pantalla es "0", **cuando** pulso "±", **entonces** el valor permanece en "0" (no se muestra "-0").
+
 ---
 
 ## Pendiente de completar
