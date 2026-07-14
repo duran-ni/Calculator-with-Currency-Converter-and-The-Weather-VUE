@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 // Composable que encapsula el estado y la lógica de la calculadora.
 // Devuelve una API reactiva que los componentes de UI podrán consumir.
@@ -6,6 +6,11 @@ export function useCalculator() {
   const display = ref('0')
   const previousValue = ref(null)
   const operator = ref(null)
+
+  const historyDisplay = computed(() => {
+    if (previousValue.value === null || operator.value === null) return ''
+    return `${previousValue.value} ${operator.value}`
+  })
 
   function inputNumber(digit) {
     if (digit === '.' && display.value.includes('.')) return
@@ -69,5 +74,5 @@ export function useCalculator() {
     operator.value = null
   }
 
-  return { display, inputNumber, inputOperator, calculate, clear }
+  return { display, historyDisplay, inputNumber, inputOperator, calculate, clear }
 }

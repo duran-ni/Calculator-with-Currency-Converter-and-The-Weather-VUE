@@ -92,4 +92,15 @@ describe("useCalculator", () => {
 
     expect(display.value).toBe('0')
   })
+
+  it('expone un histórico con el número y operador pendientes', () => {
+    const { historyDisplay, inputNumber, inputOperator } = useCalculator()
+
+    expect(historyDisplay.value).toBe('')
+
+    inputNumber('5')
+    inputOperator('+')
+
+    expect(historyDisplay.value).toBe('5 +')
+  })
 });
