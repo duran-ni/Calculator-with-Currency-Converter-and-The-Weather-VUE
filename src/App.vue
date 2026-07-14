@@ -25,6 +25,11 @@ function handleMemoryClear() {
 
 <template>
   <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">Calculadora Multifuncional</h1>
+      <p class="app__subtitle">Calculadora - Conversor de Divisas - El Tiempo</p>
+    </header>
+
     <CalculatorMemory
       @memory-add="handleMemoryAdd"
       @memory-recall="handleMemoryRecall"
@@ -37,6 +42,10 @@ function handleMemoryClear() {
       @equal="calculate"
       @clear="clear"
     />
+
+    <footer class="app__footer">
+      <p>Nieves Durán - Bootcamp F5 Asturias</p>
+    </footer>
   </main>
 </template>
 
@@ -45,5 +54,29 @@ function handleMemoryClear() {
   max-width: 400px;
   margin: 0 auto;
   padding: var(--spacing-lg);
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    margin: 0;
+    color: rgb(9, 152, 9);
+  }
+
+  &__subtitle {
+    margin: var(--spacing-xs) 0 0;
+    font-size: 0.8rem;
+    color: rgb(15, 15, 220);
+  }
+
+  &__footer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-lg);
+  }
 }
 </style>

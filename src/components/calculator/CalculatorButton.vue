@@ -57,7 +57,7 @@ defineEmits(["press"]);
   }
 
   &--memory {
-    background: #b9c6d6;
+    background: #99ecbd;
     border-color: #9fb0c4;
     color: var(--color-text);
     font-size: 0.85rem;
