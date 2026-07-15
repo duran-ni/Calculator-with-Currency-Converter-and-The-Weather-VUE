@@ -138,4 +138,24 @@ describe("useCalculator", () => {
 
     expect(display.value).toBe('0')
   })
+
+  it('aborta el encadenado si la operación pendiente falla (división entre cero)', () => {
+    const { display, historyDisplay, inputNumber, inputOperator } = useCalculator()
+
+    inputNumber('5')
+    inputOperator('/')
+    inputNumber('0')
+    inputOperator('+')
+
+    expect(display.value).toBe('Error: no se puede dividir por cero')
+    expect(historyDisplay.value).toBe('')
+  })
+
+  it('no hace nada al pulsar "=" sin una operación completa', () => {
+    const { display, calculate } = useCalculator()
+
+    calculate()
+
+    expect(display.value).toBe('0')
+  })
 });
