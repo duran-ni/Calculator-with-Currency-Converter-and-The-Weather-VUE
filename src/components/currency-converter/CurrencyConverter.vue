@@ -101,10 +101,12 @@ watch(
   &__input,
   &__select {
     flex: 1;
+    min-width: 0;
     padding: var(--spacing-sm);
     border-radius: var(--radius-md);
     border: 1px solid var(--color-text-muted);
     font-family: var(--font-family-base);
+    min-height: 44px;
   }
 
   &__swap-row {
@@ -117,13 +119,14 @@ watch(
     color: #fff;
     border: none;
     border-radius: 50%;
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
   }
 
   &__convert {
     width: 100%;
+    min-height: 44px;
     padding: var(--spacing-sm);
     border: none;
     border-radius: var(--radius-md);

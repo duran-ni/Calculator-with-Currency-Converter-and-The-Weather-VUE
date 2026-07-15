@@ -62,8 +62,10 @@ onMounted(() => {
 
   &__header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
   }
 
