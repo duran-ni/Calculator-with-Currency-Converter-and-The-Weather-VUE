@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import { useCalculator } from './composables/useCalculator'
 import { useMemoryStore } from './stores/memoryStore'
 import CalculatorMemory from './components/calculator/CalculatorMemory.vue'
@@ -8,6 +9,11 @@ import CurrencyConverter from './components/currency-converter/CurrencyConverter
 
 const { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue, applyPercentage, toggleSign } = useCalculator()
 const memory = useMemoryStore()
+
+const calculatorAmount = computed(() => {
+  const parsed = Number(display.value)
+  return Number.isNaN(parsed) ? 0 : parsed
+})
 
 function handleMemoryAdd() {
   memory.save(Number(display.value))
@@ -46,7 +52,7 @@ function handleMemoryClear() {
       @sign="toggleSign"
     />
 
-    <CurrencyConverter />
+    <CurrencyConverter :initial-amount="calculatorAmount" />
 
     <footer class="app__footer">
       <p>Nieves Durán - Bootcamp F5 Asturias</p>

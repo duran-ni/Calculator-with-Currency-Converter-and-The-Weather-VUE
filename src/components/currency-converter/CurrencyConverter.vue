@@ -1,7 +1,25 @@
 <script setup>
+import { watch } from 'vue'
 import { useCurrencyConverter } from '../../composables/useCurrencyConverter'
 
+const props = defineProps({
+  initialAmount: {
+    type: Number,
+    default: 0
+  }
+})
+
 const { amount, fromCurrency, toCurrency, result, rate, loading, error, convert, swap } = useCurrencyConverter()
+
+// Sincroniza el importe con el valor de la calculadora cada vez que este cambia.
+// No hay watch en sentido contrario: editar "amount" aquí no toca la calculadora.
+watch(
+  () => props.initialAmount,
+  (newValue) => {
+    amount.value = newValue
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
