@@ -4,6 +4,7 @@ import { useMemoryStore } from './stores/memoryStore'
 import CalculatorMemory from './components/calculator/CalculatorMemory.vue'
 import CalculatorDisplay from './components/calculator/CalculatorDisplay.vue'
 import CalculatorKeypad from './components/calculator/CalculatorKeypad.vue'
+import CurrencyConverter from './components/currency-converter/CurrencyConverter.vue'
 
 const { display, historyDisplay, inputNumber, inputOperator, calculate, clear, recallValue, applyPercentage, toggleSign } = useCalculator()
 const memory = useMemoryStore()
@@ -44,6 +45,8 @@ function handleMemoryClear() {
       @percentage="applyPercentage"
       @sign="toggleSign"
     />
+
+    <CurrencyConverter />
 
     <footer class="app__footer">
       <p>Nieves Durán - Bootcamp F5 Asturias</p>
