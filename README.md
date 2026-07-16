@@ -13,6 +13,10 @@
 
 ---
 
+## Enlace Github Pages
+
+[Calculator-VUE](https://duran-ni.github.io/Calculator-with-Currency-Converter-and-The-Weather-VUE/)
+
 ## 📝 Descripción
 
 Aplicación de página única (sin router) que combina tres módulos:
@@ -86,17 +90,17 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 
 ## 📦 Instalación y variables de entorno
 
-**1.** Clonar el repositorio y entra en la carpeta del proyecto.
+**1.** Clonar el repositorio y entrar en la carpeta del proyecto.
 
 **2.** Instalar las dependencias:
 ```bash
    npm install
 ```
-**3.** Crea un archivo `.env` en la raíz (usa `.env.example` como plantilla) con tu propia API key de CurrencyFreaks:
+**3.** Crear un archivo `.env` en la raíz (usa `.env.example` como plantilla) con tu propia API key de CurrencyFreaks:
 
 VITE_CURRENCYFREAKS_API_KEY=tu_api_key_aqui
 
-Puedes obtener una key gratuita registrándote en [currencyfreaks.com](https://currencyfreaks.com/). El módulo de El Tiempo (el-tiempo.net) no necesita API key, es abierta.
+Se puede obtener una key gratuita registrándote en [currencyfreaks.com](https://currencyfreaks.com/). El módulo de El Tiempo (el-tiempo.net) no necesita API key, es abierta.
 
 **4.** Arranca el servidor de desarrollo:
 ```bash
@@ -108,10 +112,7 @@ Puedes obtener una key gratuita registrándote en [currencyfreaks.com](https://c
 | Script | Descripción |
 | --- | --- |
 | `npm run dev` | Arranca el servidor de desarrollo de Vite. |
-| `npm run build` | Genera la build de producción. |
-| `npm run preview` | Sirve localmente la build de producción ya generada. |
 | `npm run test:unit` | Ejecuta los tests unitarios y de componentes (Vitest) una vez. |
-| `npm run test:unit-w` | Ejecuta los tests unitarios en modo watch. |
 | `npm run test:coverage` | Ejecuta los tests unitarios y genera el informe de cobertura. |
 | `npm run test:e2e` | Ejecuta los tests end-to-end con Playwright. |
 
