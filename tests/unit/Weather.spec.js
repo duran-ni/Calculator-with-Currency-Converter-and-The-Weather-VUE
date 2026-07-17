@@ -97,8 +97,10 @@ describe('Weather', () => {
     mockWeather({
       city: ref({
         name: 'Madrid',
-        stateSky: { description: 'Despejado', id: '11' },
-        temperatures: { max: '35', min: '22' }
+        skyId: '11',
+        skyDescription: 'Despejado',
+        maxTemp: 35,
+        minTemp: 22
       })
     })
 
@@ -112,7 +114,7 @@ describe('Weather', () => {
 
   it('no muestra los datos de la ciudad si loading es true', () => {
     mockWeather({
-      city: ref({ name: 'Madrid', stateSky: { description: 'Despejado', id: '11' }, temperatures: { max: '35', min: '22' } }),
+      city: ref({ name: 'Madrid', skyId: '11', skyDescription: 'Despejado', maxTemp: 35, minTemp: 22 }),
       loading: ref(true)
     })
 
@@ -123,7 +125,7 @@ describe('Weather', () => {
 
   it('no muestra los datos de la ciudad si hay un error', () => {
     mockWeather({
-      city: ref({ name: 'Madrid', stateSky: { description: 'Despejado', id: '11' }, temperatures: { max: '35', min: '22' } }),
+      city: ref({ name: 'Madrid', skyId: '11', skyDescription: 'Despejado', maxTemp: 35, minTemp: 22 }),
       error: ref('fallo')
     })
 

@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
+import { mapCurrencyRates } from '../models/currencyModel'
 
 const API_URL = 'https://api.currencyfreaks.com/v2.0/rates/latest'
 
@@ -36,9 +37,9 @@ export function useCurrencyConverter() {
         }
       })
 
-      const rates = response.data.rates
-      const rateFrom = Number(rates[fromCurrency.value])
-      const rateTo = Number(rates[toCurrency.value])
+      const rates = mapCurrencyRates(response.data)
+      const rateFrom = rates[fromCurrency.value]
+      const rateTo = rates[toCurrency.value]
 
       // Ambas tasas vienen respecto a 1 USD (base fija del plan gratuito).
       // Cruzamos: 1 unidad de "from" equivale a (rateTo / rateFrom) unidades de "to".

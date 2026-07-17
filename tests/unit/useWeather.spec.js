@@ -24,7 +24,7 @@ describe('useWeather', () => {
     await fetchWeather()
 
     expect(city.value.name).toBe('Madrid')
-    expect(city.value.stateSky.id).toBe('11')
+    expect(city.value.skyId).toBe('11')
   })
 
   it('cambia a Asturias y trae la capital de la provincia (Oviedo)', async () => {

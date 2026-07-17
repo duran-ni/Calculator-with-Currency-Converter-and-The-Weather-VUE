@@ -42,11 +42,11 @@ onMounted(() => {
     </div>
 
     <div v-if="city && !loading && !error" class="weather__body">
-      <div class="weather__icon">{{ getSkyIcon(city.stateSky.id) }}</div>
+      <div class="weather__icon">{{ getSkyIcon(city.skyId) }}</div>
       <div class="weather__info">
         <p class="weather__city">{{ city.name }}</p>
-        <p class="weather__temp">{{ city.temperatures.max }}° / {{ city.temperatures.min }}°</p>
-        <p class="weather__desc">{{ city.stateSky.description }}</p>
+        <p class="weather__temp">{{ city.maxTemp }}° / {{ city.minTemp }}°</p>
+        <p class="weather__desc">{{ city.skyDescription }}</p>
       </div>
     </div>
   </section>

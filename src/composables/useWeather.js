@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
+import { mapWeatherCity } from '../models/weatherModel'
 
 const NATIONAL_URL = 'https://api.el-tiempo.net/json/v3/general'
 const ASTURIAS_URL = 'https://api.el-tiempo.net/json/v3/provincias/33'
@@ -9,7 +10,7 @@ const NATIONAL_CITY = 'Madrid'
 // Usa la API de el-tiempo.net (AEMET) y muestra una única ciudad representativa:
 // Madrid para el ámbito nacional, o la capital de la provincia para Asturias
 export function useWeather() {
-  const scope = ref('nacional') // 'nacional' | 'asturias'
+  const scope = ref('nacional')
   const city = ref(null)
   const loading = ref(false)
   const error = ref(null)
@@ -32,7 +33,7 @@ export function useWeather() {
         throw new Error('Ciudad no encontrada en la respuesta de la API')
       }
 
-      city.value = found
+      city.value = mapWeatherCity(found)
     } catch (err) {
       error.value = 'No se pudo obtener el tiempo. Inténtalo de nuevo.'
       city.value = null
