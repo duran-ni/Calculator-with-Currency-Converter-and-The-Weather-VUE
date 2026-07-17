@@ -3,12 +3,14 @@ import axios from 'axios'
 import { mapWeatherCity } from '../models/weatherModel'
 
 const NATIONAL_URL = 'https://api.el-tiempo.net/json/v3/general'
-const ASTURIAS_URL = 'https://api.el-tiempo.net/json/v3/provincias/33'
 const NATIONAL_CITY = 'Madrid'
 
+function provinceUrl(codProv) {
+  return `https://api.el-tiempo.net/json/v3/provincias/${codProv}`
+}
+
 // Composable que encapsula el estado y la lógica del módulo "El Tiempo".
-// Usa la API de el-tiempo.net (AEMET) y muestra una única ciudad representativa:
-// Madrid para el ámbito nacional, o la capital de la provincia para Asturias
+// "scope" vale 'nacional' o el código de una provincia (CODPROV, ej. '33').
 export function useWeather() {
   const scope = ref('nacional')
   const city = ref(null)
@@ -20,7 +22,7 @@ export function useWeather() {
     error.value = null
 
     try {
-      const url = scope.value === 'nacional' ? NATIONAL_URL : ASTURIAS_URL
+      const url = scope.value === 'nacional' ? NATIONAL_URL : provinceUrl(scope.value)
       const response = await axios.get(url)
 
       const cityName = scope.value === 'nacional'
@@ -42,7 +44,7 @@ export function useWeather() {
     }
   }
 
-  // Cambia el ámbito (nacional/asturias) y vuelve a consultar la API automáticamente.
+  // Cambia el ámbito (nacional/código de provincia) y vuelve a consultar la API automáticamente.
   function setScope(newScope) {
     scope.value = newScope
     return fetchWeather()

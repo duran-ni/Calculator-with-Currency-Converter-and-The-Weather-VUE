@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import Weather from '../../src/components/weather/Weather.vue'
 import { useWeather } from '../../src/composables/useWeather'
+import { PROVINCIAS } from '../../src/models/provinces'
 
 vi.mock('../../src/composables/useWeather', () => ({
   useWeather: vi.fn()
@@ -35,42 +36,34 @@ describe('Weather', () => {
     expect(mocked.fetchWeather).toHaveBeenCalledOnce()
   })
 
-  it('llama a setScope("nacional") al pulsar el botón Nacional', async () => {
+  it('muestra un desplegable con la opción Nacional y las 52 provincias', () => {
+    mockWeather()
+
+    const wrapper = mount(Weather)
+    const options = wrapper.findAll('option')
+
+    expect(options).toHaveLength(1 + PROVINCIAS.length)
+    expect(options[0].text()).toBe('Nacional')
+  })
+
+  it('el desplegable muestra seleccionado el scope actual', () => {
+    mockWeather({ scope: ref('33') })
+
+    const wrapper = mount(Weather)
+    const select = wrapper.find('select')
+
+    expect(select.element.value).toBe('33')
+  })
+
+  it('llama a setScope con el código de provincia al cambiar el desplegable', async () => {
     const mocked = mockWeather()
 
     const wrapper = mount(Weather)
-    const button = wrapper.findAll('button').find((b) => b.text() === 'Nacional')
-    await button.trigger('click')
+    const select = wrapper.find('select')
 
-    expect(mocked.setScope).toHaveBeenCalledWith('nacional')
-  })
+    await select.setValue('33')
 
-  it('llama a setScope("asturias") al pulsar el botón Asturias', async () => {
-    const mocked = mockWeather()
-
-    const wrapper = mount(Weather)
-    const button = wrapper.findAll('button').find((b) => b.text() === 'Asturias')
-    await button.trigger('click')
-
-    expect(mocked.setScope).toHaveBeenCalledWith('asturias')
-  })
-
-  it('marca el botón "Nacional" como activo cuando scope es "nacional"', () => {
-    mockWeather({ scope: ref('nacional') })
-
-    const wrapper = mount(Weather)
-    const button = wrapper.findAll('button').find((b) => b.text() === 'Nacional')
-
-    expect(button.classes()).toContain('weather__scope-button--active')
-  })
-
-  it('marca el botón "Asturias" como activo cuando scope es "asturias"', () => {
-    mockWeather({ scope: ref('asturias') })
-
-    const wrapper = mount(Weather)
-    const button = wrapper.findAll('button').find((b) => b.text() === 'Asturias')
-
-    expect(button.classes()).toContain('weather__scope-button--active')
+    expect(mocked.setScope).toHaveBeenCalledWith('33')
   })
 
   it('muestra el mensaje de carga cuando loading es true', () => {

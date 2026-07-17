@@ -58,7 +58,7 @@ function handleMemoryClear() {
     <Weather />
 
     <footer class="app__footer">
-      <p>Nieves Durán - Bootcamp F5 Asturias</p>
+      <p>Nieves Durán - Factoría F5 Asturias</p>
     </footer>
   </main>
 </template>

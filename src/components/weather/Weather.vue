@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { useWeather } from '../../composables/useWeather'
 import { getSkyIcon } from '../../utils/skyIcons'
+import { PROVINCIAS } from '../../models/provinces'
 
 const { scope, city, loading, error, setScope, fetchWeather } = useWeather()
 
@@ -17,20 +18,22 @@ onMounted(() => {
     <div class="weather__header">
       <h2 class="weather__title">☁️ El Tiempo</h2>
       <div class="weather__scope">
-        <button
-          class="weather__scope-button"
-          :class="{ 'weather__scope-button--active': scope === 'nacional' }"
-          @click="setScope('nacional')"
+        <label class="weather__scope-label" for="weather-scope-select">Ámbito</label>
+        <select
+          id="weather-scope-select"
+          class="weather__scope-select"
+          :value="scope"
+          @change="setScope($event.target.value)"
         >
-          Nacional
-        </button>
-        <button
-          class="weather__scope-button"
-          :class="{ 'weather__scope-button--active': scope === 'asturias' }"
-          @click="setScope('asturias')"
-        >
-          Asturias
-        </button>
+          <option value="nacional">Nacional</option>
+          <option
+            v-for="provincia in PROVINCIAS"
+            :key="provincia.codProv"
+            :value="provincia.codProv"
+          >
+            {{ provincia.nombre }}
+          </option>
+        </select>
       </div>
     </div>
 
@@ -76,22 +79,23 @@ onMounted(() => {
 
   &__scope {
     display: flex;
+    align-items: center;
     gap: var(--spacing-xs);
   }
 
-  &__scope-button {
+  &__scope-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  &__scope-select {
     border: 1px solid var(--color-primary);
     background: transparent;
     color: var(--color-primary);
-    border-radius: 999px;
-    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-md);
+    padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
     cursor: pointer;
-
-    &--active {
-      background: var(--color-primary);
-      color: #fff;
-    }
   }
 
   &__body {

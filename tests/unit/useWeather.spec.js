@@ -27,7 +27,7 @@ describe('useWeather', () => {
     expect(city.value.skyId).toBe('11')
   })
 
-  it('cambia a Asturias y trae la capital de la provincia (Oviedo)', async () => {
+  it('cambia a una provincia y trae la capital de la provincia (Oviedo)', async () => {
     axios.get.mockResolvedValue({
       data: {
         provincia: { CAPITAL_PROVINCIA: 'Oviedo' },
@@ -40,7 +40,7 @@ describe('useWeather', () => {
 
     const { city, setScope } = useWeather()
 
-    await setScope('asturias')
+     await setScope('33')
 
     expect(city.value.name).toBe('Oviedo')
   })
