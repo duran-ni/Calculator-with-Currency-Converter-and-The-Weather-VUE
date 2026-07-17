@@ -27,3 +27,7 @@ test-results/
 playwright-report/
 
 coverage/
+
+# Environment variables (contienen API keys, no deben subirse al repo)
+.env
+.env.*.local
