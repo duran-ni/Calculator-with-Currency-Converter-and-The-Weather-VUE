@@ -52,7 +52,10 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 ├── package.json
 ├── vite.config.js          # Config de Vite + Vitest (test, coverage)
 ├── playwright.config.js    # Config de Playwright (e2e)
-├── .env.example
+├── .env                    # Variables de entorno reales (NO se sube al repo)
+├── .env.example            # Plantilla de variables de entorno
+├── .vscode/
+│   └── extensions.json
 ├── public/
 │   └── favicon.svg
 ├── src/
@@ -79,6 +82,10 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 │   │   ├── useCalculator.js
 │   │   ├── useCurrencyConverter.js
 │   │   └── useWeather.js
+│   ├── models/              # Mapean la respuesta cruda de cada API a un modelo propio de la app
+│   │   ├── currencyModel.js
+│   │   ├── provinces.js     # Listado estático de las 52 provincias españolas (AEMET)
+│   │   └── weatherModel.js
 │   ├── stores/
 │   │   └── memoryStore.js
 │   └── utils/
@@ -314,15 +321,9 @@ Se puede obtener una key gratuita registrándote en [currencyfreaks.com](https:/
 
 ![Wireframe](src/assets/imgs/wireframe.png)
 
-### Tests unitarios y de componentes (92 en verde)
+### Tests unitarios y de componentes (96 en verde)
 
-![Tests parte 1](src/assets/imgs/tests-parte1.png)
-![Tests parte 2](src/assets/imgs/tests-parte2.png)
-![Tests parte 3](src/assets/imgs/tests-parte3.png)
-![Tests parte 4](src/assets/imgs/tests-parte4.png)
-![Tests parte 5](src/assets/imgs/tests-parte5.png)
-![Tests parte 6](src/assets/imgs/tests-parte6.png)
-![92 tests en verde](src/assets/imgs/92-tests-verde.png)
+![96 tests en verde](src/assets/imgs/96-tests-verde.png)
 
 ### Cobertura de tests (100%)
 
