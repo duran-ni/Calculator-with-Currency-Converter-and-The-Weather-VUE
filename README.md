@@ -54,6 +54,9 @@ Diseño Mobile First con CSS/Sass y metodología BEM. Sin Vue Router: toda la fu
 ├── playwright.config.js    # Config de Playwright (e2e)
 ├── .env                    # Variables de entorno reales (NO se sube al repo)
 ├── .env.example            # Plantilla de variables de entorno
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # CI: build y despliegue automático a GitHub Pages
 ├── .vscode/
 │   └── extensions.json
 ├── public/
